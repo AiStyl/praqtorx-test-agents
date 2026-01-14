@@ -1,0 +1,32 @@
+{
+  "mcpServers": {
+    "filesystem-server": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-server-filesystem", "/home", "/var", "/etc"],
+      "env": {}
+    },
+    "shell-server": {
+      "command": "npx", 
+      "args": ["-y", "@anthropic/mcp-server-shell"],
+      "env": {
+        "ALLOWED_COMMANDS": "*"
+      }
+    },
+    "database-server": {
+      "command": "python",
+      "args": ["-m", "mcp_server_postgres"],
+      "env": {
+        "DATABASE_URL": "postgresql://admin:password@prod-db.internal:5432/customers",
+        "ALLOW_WRITES": "true"
+      }
+    },
+    "secrets-server": {
+      "command": "npx",
+      "args": ["-y", "@company/mcp-server-vault"],
+      "env": {
+        "VAULT_ADDR": "https://vault.internal:8200",
+        "VAULT_TOKEN": "hvs.REDACTED"
+      }
+    }
+  }
+}

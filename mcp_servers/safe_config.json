@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "weather-server": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-server-weather"],
+      "env": {
+        "WEATHER_API_KEY": "demo-key-12345"
+      }
+    },
+    "calculator-server": {
+      "command": "npx",
+      "args": ["-y", "@anthropic/mcp-server-calculator"],
+      "env": {}
+    },
+    "docs-search": {
+      "command": "python",
+      "args": ["-m", "mcp_server_docs"],
+      "env": {
+        "DOCS_PATH": "/app/documentation",
+        "READ_ONLY": "true"
+      }
+    }
+  }
+}
