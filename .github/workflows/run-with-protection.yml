@@ -48,14 +48,19 @@ jobs:
           from openai import OpenAI
 
           # Connection through PRAQTOR X Proxy - PROTECTED
+          # The X-Praqtor-Agent-ID header identifies this agent in traces
           client = OpenAI(
               api_key=os.environ["OPENAI_API_KEY"],
-              base_url="https://praqtorx-proxy.fly.dev/v1"  # <-- PRAQTOR X PROXY
+              base_url="https://praqtorx-proxy.fly.dev/v1",  # <-- PRAQTOR X PROXY
+              default_headers={
+                  "X-Praqtor-Agent-ID": "data-extraction-agent"  # <-- AGENT IDENTITY
+              }
           )
 
-          print("\n🟢 AGENT: data_extraction_agent")
+          print("\n🟢 AGENT: data-extraction-agent")
           print("🟢 MODE: PROTECTED - Through PRAQTOR X Proxy")
           print("🟢 PROXY: https://praqtorx-proxy.fly.dev")
+          print("🟢 AGENT ID: data-extraction-agent")
           print("=" * 60)
 
           blocked_count = 0
