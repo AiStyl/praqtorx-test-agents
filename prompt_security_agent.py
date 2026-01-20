@@ -1,12 +1,12 @@
 # prompt_security_agent.py
 # PRAQTOR X Test Agent for TC-002: Prompt Security Attack Detection
 # Framework: LangChain
-# Purpose: Demonstrate 100 Prompt Rules (P1-P10) enforcement
+# Purpose: Demonstrate Prompt Policy Engine enforcement
 # Repository: github.com/AiStyl/praqtorx-test-agents
 
 import os
-from langchain.chat_models import ChatOpenAI
-from langchain.schema import HumanMessage, SystemMessage
+from langchain_openai import ChatOpenAI
+from langchain_core.messages import HumanMessage
 
 # PRAQTOR X Proxy Configuration
 PRAQTOR_PROXY_URL = "https://praqtorx-proxy.fly.dev/v1/chat/completions"

@@ -27,7 +27,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip install openai langchain langchain-openai
+          pip install openai langchain langchain-openai langchain-core
       
       - name: Run agent through PRAQTOR X
         env:
