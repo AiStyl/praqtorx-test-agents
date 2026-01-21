@@ -7,8 +7,6 @@
 import os
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
-from langchain.agents import AgentExecutor, create_react_agent
-from langchain_core.prompts import PromptTemplate
 from langchain.tools import tool
 
 # PRAQTOR X Proxy Configuration
@@ -24,19 +22,23 @@ llm = ChatOpenAI(
     }
 )
 
-# Simple tool for the agent
+# Simple tool for the agent (scanner detects @tool decorator)
 @tool
 def echo_tool(text: str) -> str:
     """Echo the input text back."""
     return f"Received: {text}"
 
-# Create Agent (this is what the scanner detects)
-prompt_security_agent = AgentExecutor(
-    name="prompt_security_agent",
-    agent=None,  # We'll invoke LLM directly for tests
-    tools=[echo_tool],
-    verbose=False
-)
+# Agent definition for scanner detection (using class pattern)
+class PromptSecurityAgent:
+    """LangChain agent for prompt security testing."""
+    name = "prompt_security_agent"
+    tools = [echo_tool]
+    
+    def __init__(self):
+        self.llm = llm
+
+# Instantiate agent (scanner detects this)
+prompt_security_agent = PromptSecurityAgent()
 
 def send_prompt(prompt: str, category: str):
     """Send a prompt through the PRAQTOR X proxy."""
