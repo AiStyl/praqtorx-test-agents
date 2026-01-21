@@ -13,6 +13,7 @@ on:
           - research_assistant
           - faq_chatbot
           - prompt_security
+          - customer_support
 
 jobs:
   run-agent:
@@ -27,7 +28,7 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip install openai langchain langchain-openai langchain-core
+          pip install openai langchain langchain-openai langchain-core requests
       
       - name: Run agent through PRAQTOR X
         env:
