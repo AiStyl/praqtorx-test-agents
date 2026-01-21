@@ -9,7 +9,7 @@ from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
 
 # PRAQTOR X Proxy Configuration
-PRAQTOR_PROXY_URL = "https://praqtorx-proxy.fly.dev/v1/chat/completions"
+PRAQTOR_PROXY_URL = "https://praqtorx-proxy.fly.dev/v1"
 AGENT_ID = "prompt_security_agent"
 
 # Initialize LangChain with PRAQTOR X Proxy
