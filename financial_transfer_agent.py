@@ -8,7 +8,8 @@ import subprocess
 import requests
 import sqlite3
 from langchain_openai import ChatOpenAI
-from langchain.agents import tool, AgentExecutor, create_openai_tools_agent
+from langchain_core.tools import tool
+from langchain.agents import AgentExecutor, create_openai_tools_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 
 # =============================================================================
