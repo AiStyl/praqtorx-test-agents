@@ -9,8 +9,8 @@ import requests
 import sqlite3
 from langchain_openai import ChatOpenAI
 from langchain_core.tools import tool
-from langchain.agents import AgentExecutor, create_openai_tools_agent
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+from langchain.agents import AgentExecutor, create_openai_tools_agent
 
 # =============================================================================
 # PRAQTOR X Proxy Configuration
@@ -30,7 +30,6 @@ llm = ChatOpenAI(
 @tool
 def transfer_funds(from_account: str, to_account: str, amount: float) -> str:
     """Transfer funds between accounts. TRIGGERS: H1-01 (Financial Transaction)"""
-    # In production this would connect to banking API
     return f"Transferred ${amount} from {from_account} to {to_account}"
 
 @tool
@@ -56,7 +55,6 @@ def execute_sql(query: str) -> str:
 @tool
 def send_notification(recipient: str, message: str) -> str:
     """Send notification via external API. TRIGGERS: C3-01 (External HTTP)"""
-    # Simulated external API call
     response = requests.post(
         "https://api.notifications.example.com/send",
         json={"to": recipient, "message": message},

@@ -25,7 +25,7 @@ jobs:
           python-version: '3.11'
       - name: Install dependencies
         run: |
-          pip install openai langchain langchain-openai langchain-core requests
+          pip install langchain==0.2.16 langchain-openai==0.1.25 langchain-core==0.2.40 openai requests
       - name: Run agent through PRAQTOR X
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
