@@ -1,5 +1,4 @@
 name: 🟢 Run Agent WITH PRAQTOR X
-
 on:
   workflow_dispatch:
     inputs:
@@ -14,22 +13,19 @@ on:
           - faq_chatbot
           - prompt_security
           - customer_support
-
+          - financial_transfer
 jobs:
   run-agent:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      
       - name: Install dependencies
         run: |
           pip install openai langchain langchain-openai langchain-core requests
-      
       - name: Run agent through PRAQTOR X
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
